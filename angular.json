@@ -25,9 +25,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/lib/animate/animate.min.css",
+              "src/assets/css/lib/owlcarousel/assets/owl.carousel.min.css",
+              "src/assets/css/style.css",
+              
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+             "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/lib/wow/wow.min.js",
+              "src/assets/js/lib/easing/easing.min.js",
+              "src/assets/js/lib/waypoints/waypoints.min.js",
+              "src/assets/js/lib/owlcarousel/owl.carousel.min.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8fb630a8-0cc9-412f-889b-87589be898e6"
   }
 }
