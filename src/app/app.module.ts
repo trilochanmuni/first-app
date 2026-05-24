@@ -7,7 +7,9 @@ import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
 import { ContactComponent } from './contact/contact.component';
 import { AppointmentComponent } from './appointment/appointment.component';
-import {provideClientHydration} from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideServerRendering } from '@angular/platform-server';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,11 @@ import {provideClientHydration} from '@angular/platform-browser';
     AboutComponent,
     ServicesComponent,
     ContactComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    PageNotFoundComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [ provideClientHydration()],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [provideClientHydration()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -16,26 +16,20 @@
             "outputPath": "dist/my-app/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.css",
               "src/assets/css/lib/animate/animate.min.css",
               "src/assets/css/lib/owlcarousel/assets/owl.carousel.min.css",
               "src/assets/css/style.css",
-              
+
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
-              
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-             "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/js/lib/wow/wow.min.js",
               "src/assets/js/lib/easing/easing.min.js",
               "src/assets/js/lib/waypoints/waypoints.min.js",
@@ -57,17 +51,24 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              }
             },
             "development": {
               "buildOptimizer": false,
-              "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
             }
           },
+
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -91,18 +92,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
@@ -119,20 +112,21 @@
             },
             "development": {
               "buildOptimizer": false,
-              "optimization": false,
+
               "sourceMap": true,
               "extractLicenses": false,
               "vendorChunk": true
             }
           },
+
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "my-app:build:development",
-              "serverTarget": "my-app:server:development"
+              "browserTarget": "my-app:build:build",
+              "serverTarget": "my-app:server:server"
             },
             "production": {
               "browserTarget": "my-app:build:production",
@@ -144,9 +138,7 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {

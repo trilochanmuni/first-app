@@ -1,4 +1,13 @@
-import { AfterViewInit, Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  PLATFORM_ID,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
+
 declare var jQuery: any;
 
 @Component({
@@ -6,25 +15,43 @@ declare var jQuery: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private meta: Meta,
+    private title: Title,
+  ) {}
+  ngOnInit(): void {
+    this.meta.addTags([
+      {
+        name: 'description',
+        content: 'This is the home page of our Angular application.',
+      },
+      { name: 'keywords', content: 'angular, home, page, example' },
+      { name: 'author', content: 'Your Name' },
+    ]);
+    this.title.setTitle('Home - My Angular App');
+  }
   ngAfterViewInit(): void {
-    (function ($) {
-      $(document).ready(function () {
-        console.log('jQuery is working!');
-        $('.header-carousel').owlCarousel({
-          nav: true,
-          navText: [
-            "<i class='lni-chevron-left'></i>",
-            "<i class='lni-chevron-right'></i>",
-          ],
-          items: 1,
-          loop: true,
-          center: true,
-          margin: 0,
-          lazyLoad: true,
-          dots: false,
+    if (isPlatformBrowser(this.platformId)) {
+      (function ($) {
+        $(document).ready(function () {
+          console.log('jQuery is working!');
+          $('.header-carousel').owlCarousel({
+            nav: true,
+            navText: [
+              "<i class='lni-chevron-left'></i>",
+              "<i class='lni-chevron-right'></i>",
+            ],
+            items: 1,
+            loop: true,
+            center: true,
+            margin: 0,
+            lazyLoad: true,
+            dots: false,
+          });
         });
-      });
-    })(jQuery);
+      })(jQuery);
+    }
   }
 }
