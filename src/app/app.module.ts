@@ -10,6 +10,11 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideServerRendering } from '@angular/platform-server';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HlDirective } from './hl.directive';
+import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,8 +24,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ContactComponent,
     AppointmentComponent,
     PageNotFoundComponent,
+    HomeComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, HlDirective],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

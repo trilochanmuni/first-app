@@ -26,7 +26,7 @@
         class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
         data-wow-delay="0.1s"
       >
-        <div class="service-item rounded">
+        <div class="service-item rounded" [ngClass]="{'active': tl}">
           <div class="service-img rounded-top">
             <img
               src="assets/img/1.jpg"
@@ -49,9 +49,9 @@
       </div>
       <div
         class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
-        data-wow-delay="0.3s"
+        data-wow-delay="0.3s" 
       >
-        <div class="service-item rounded">
+        <div class="service-item rounded" *ngIf="tl">
           <div class="service-img rounded-top">
             <img
               src="assets/img/2.jpg"
@@ -86,7 +86,7 @@
           </div>
           <div class="service-content rounded-bottom bg-light p-4">
             <div class="service-content-inner">
-              <p class="mb-4">Active Pharma <br />Ingredients</p>
+              <p class="mb-4">{{ tag }} <br />Ingredients</p>
 
               <a
                 href="#"
@@ -507,7 +507,23 @@
   </div>
 </div>
 <!-- Testimonial End -->
+ <!--
+<div *ngFor="let item of tla; let i = index">
+  <p>{{ item.name }}</p>
+  <p>{{ item.link }}</p>
+</div>
+-->
 
+<!--
+  <input type="text" [(ngModel)]="taginput" />
+  <p>{{ taginput }}</p>
+  -->
+
+  <!--
+    
+  <p [appHl]="'cyan'">Hover over me to see cyan!</p>
+  <p appHl>Hover over me to see default yellow!</p>
+  -->
 <!-- Blog Start -->
 <div class="container-fluid blog py-5">
   <div class="container py-5">
