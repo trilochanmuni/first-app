@@ -26,7 +26,7 @@
         class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
         data-wow-delay="0.1s"
       >
-        <div class="service-item rounded" [ngClass]="{'active': tl}">
+        <div class="service-item rounded" [ngClass]="{ active: tl }">
           <div class="service-img rounded-top">
             <img
               src="assets/img/1.jpg"
@@ -49,7 +49,7 @@
       </div>
       <div
         class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
-        data-wow-delay="0.3s" 
+        data-wow-delay="0.3s"
       >
         <div class="service-item rounded" *ngIf="tl">
           <div class="service-img rounded-top">
@@ -507,23 +507,24 @@
   </div>
 </div>
 <!-- Testimonial End -->
- <!--
-<div *ngFor="let item of tla; let i = index">
-  <p>{{ item.name }}</p>
-  <p>{{ item.link }}</p>
+<!--
+<div *ngFor="let item of todoArray; let i = index">
+  <div *ngIf="i < 5">
+    <p>{{ item.title }}</p>
+    <p>{{ item.id }}</p>
+  </div>
 </div>
 -->
-
 <!--
   <input type="text" [(ngModel)]="taginput" />
   <p>{{ taginput }}</p>
   -->
 
-  <!--
-    
-  <p [appHl]="'cyan'">Hover over me to see cyan!</p>
-  <p appHl>Hover over me to see default yellow!</p>
-  -->
+<!-- <p *appHl="'cyan'">Hover over me to see cyan!</p> -->
+<!--
+<p [appHoverHighlight]="'cyan'">Hover over me to see cyan!</p>
+<p appHoverHighlight>Hover over me to see default yellow!</p>
+-->
 <!-- Blog Start -->
 <div class="container-fluid blog py-5">
   <div class="container py-5">

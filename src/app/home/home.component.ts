@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
+import { HlDirective } from '../hl.directive';
+import { HomeService } from '../home.service';
 
 declare var jQuery: any;
 
@@ -14,22 +16,34 @@ declare var jQuery: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  
 })
 export class HomeComponent implements AfterViewInit, OnInit {
-  public tagin: string = ""
-  public tag: string = "Active Pharma";
+  public todoArray: any[] = [];
+  public tagin: string = '';
+  public tag: string = 'Active Pharma';
   public tl: boolean = true;
   public tla: any[] = [
-    { name: 'Active Pharma Ingredients abcd', link: '/active-pharma-ingredients' },
-    { name: 'Pharmaceutical Intermediates', link: '/pharmaceutical-intermediates' },  ]
+    {
+      name: 'Active Pharma Ingredients abcd',
+      link: '/active-pharma-ingredients',
+    },
+    {
+      name: 'Pharmaceutical Intermediates',
+      link: '/pharmaceutical-intermediates',
+    },
+  ];
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private meta: Meta,
     private title: Title,
+    public home: HomeService,
   ) {}
   ngOnInit(): void {
-    
+    this.home.getTodoLists().subscribe((data) => {
+      this.todoArray = data as any[];
+      console.log(this.todoArray);
+      this.home.postTodoList(this.todoArray);
+    });
     this.meta.addTags([
       {
         name: 'description',

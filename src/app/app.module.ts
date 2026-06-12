@@ -14,7 +14,8 @@ import { HlDirective } from './hl.directive';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
-
+import { provideHttpClient } from '@angular/common/http';
+import { HomeService } from './home.service';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { FormsModule } from '@angular/forms';
     AppointmentComponent,
     PageNotFoundComponent,
     HomeComponent,
-
+    HlDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, HlDirective],
-  providers: [provideClientHydration()],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
+  providers: [provideClientHydration(), provideHttpClient(), HomeService],
+  exports: [HlDirective],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
