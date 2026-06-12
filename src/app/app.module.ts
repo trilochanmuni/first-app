@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +24,11 @@ import { FormsModule } from '@angular/forms';
     AppointmentComponent,
     PageNotFoundComponent,
     HomeComponent,
-
+    HlDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, HlDirective],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [provideClientHydration()],
+  exports: [HlDirective],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
